@@ -6,22 +6,10 @@ Reverse proxy with SSL for Docker services
 ## Instructions
 1) Create the Dash network (if not created already) `docker network create dash-net`
 
-2) Create the directory where Traefik will be configured
-    - `mkdir -p /opt/traefik`
-    
-3) Create three files required for Traefik and Let's Encrypt
-    - `touch /opt/traefik/docker-compose.yml`
-    - `touch /opt/traefik/acme.json && chmod 600 /opt/traefik/acme.json`
-    - `touch /opt/traefik/traefik.toml`
-
-4) Configure `docker-compose.yml` according to [docker-compose.yml](https://github.com/marist-dash/dash-traefik/blob/master/docker-compose.yml)
-
-5) Configure `traefik.toml` according to [traefik.toml](https://github.com/marist-dash/dash-traefik/blob/master/traefik.toml)
-
-6) Pull the Traefik Docker image and start the server
+2) Pull the Traefik Docker image and start the server
     - `docker-compose up -d`
     
-7) To hook a service running in Docker to Traefik
+3) To hook a service running in Docker to Traefik
     - Add a `labels` object in the service's `docker-compose.yml` or `production.yml`
     - Add the following options under `labels`
 ```
