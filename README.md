@@ -1,5 +1,5 @@
 # dash-traefik
-Reverse proxy with SSL for Docker services. The `deploy-marist` branch is used for deployments to a VM on the Marist private network (no SSL).
+Reverse proxy with SSL for Docker services. This is intended for deployments to a Marist VM (no SSL).
 
 [https://docs.traefik.io/user-guide/docker-and-lets-encrypt/](https://docs.traefik.io/user-guide/docker-and-lets-encrypt/)
 
