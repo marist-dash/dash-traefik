@@ -2,28 +2,21 @@ debug = false
 
 logLevel = "ERROR"
 defaultEntryPoints = ["https","http"]
-
+	
 [entryPoints]
-  [entryPoints.http]
-  address = ":80"
-    [entryPoints.http.redirect]
-    entryPoint = "https"
-  [entryPoints.https]
-  address = ":443"
-  [entryPoints.https.tls]
+  [entrtPoints.http]
+	address = ":80"
+	  [entryPoints.http]
+	[entrypoints.https]
+	address = ":443"
+	  [entryPoints.https.redirect]
+	  entryPoint = "http"
+	  
 
 [retry]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "maristdash.tk"
+domain = "dev-maristdash.tk"
 watch = true
 exposedByDefault = false
-
-[acme]
-email = "tyler.galske1@marist.edu"
-storage = "acme.json"
-entryPoint = "https"
-onHostRule = true
-[acme.httpChallenge]
-entryPoint = "http"
