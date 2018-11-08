@@ -1,17 +1,11 @@
 debug = false
 
 logLevel = "ERROR"
-defaultEntryPoints = ["https","http"]
+defaultEntryPoints = ["http"]
 	
 [entryPoints]
   [entrtPoints.http]
-	address = ":80"
-	  [entryPoints.http]
-	[entrypoints.https]
-	address = ":443"
-	  [entryPoints.https.redirect]
-	  entryPoint = "http"
-	  
+  address = ":80"
 
 [retry]
 
