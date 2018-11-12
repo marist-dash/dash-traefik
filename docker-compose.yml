@@ -11,6 +11,26 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/traefik.toml
     container_name: traefik
+  portainer:
+    image: portainer/portainer
+    networks:
+      - dash-net
+    restart: always
+    ports:
+      - "9000:9000"
+    command: -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=dash-net"
+      - "traefik.port=9000"
+      - "traefik.frontend.rule=Host:dash-portainer.speedegree.tk"
+      - "traefik.backend=portainer"
 networks:
   dash-net:
+    external: true
+volumes:
+  portainer-data:
     external: true
