@@ -1,6 +1,6 @@
 debug = false
 
-logLevel = "ERROR"
+logLevel = "DEBUG"
 defaultEntryPoints = ["http", "https"]
 	
 [entryPoints]
@@ -9,7 +9,7 @@ defaultEntryPoints = ["http", "https"]
   [entryPoints.https]
   address = ":443"
   [entryPoints.https.tls]
-    [[entryPoints.https.tsl.certificates]]
+    [[entryPoints.https.tls.certificates]]
     certFile = "ssl/traefik.crt"
     keyFile = "ssl/traefik.key"
 
