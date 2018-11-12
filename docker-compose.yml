@@ -13,7 +13,7 @@ services:
       - ./traefik.toml:/traefik.toml
       - ./ssl:/ssl
     container_name: traefik
-  portainer:
+  dash-portainer:
     image: portainer/portainer
     networks:
       - dash-net
@@ -25,10 +25,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer-data:/data
     labels:
+      - "traefik.frontend.rule=PathPrefixStrip:/dash-portainer/"
       - "traefik.enable=true"
       - "traefik.docker.network=dash-net"
       - "traefik.port=9000"
-      - "traefik.frontend.rule=Host:dash-portainer.speedegree.tk"
       - "traefik.backend=portainer"
     container_name: dash-portainer
 networks:

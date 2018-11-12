@@ -1,11 +1,13 @@
 debug = false
 
-logLevel = "DEBUG"
+logLevel = "ERROR"
 defaultEntryPoints = ["http", "https"]
 	
 [entryPoints]
   [entryPoints.http]
   address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
   [entryPoints.https]
   address = ":443"
   [entryPoints.https.tls]
@@ -17,6 +19,6 @@ defaultEntryPoints = ["http", "https"]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "speedegree.tk"
+domain = "speedegree.capping.ecrl.marist.edu"
 watch = true
 exposedByDefault = false
