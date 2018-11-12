@@ -1,17 +1,17 @@
 # dash-traefik
-Reverse proxy with SSL for Docker services. This is intended for deployments to a Marist VM (no SSL).
+Reverse proxy with SSL for Docker services. This is intended for deployments to a Marist VM. An instance of Portainer starts with Traefik.
 
-[https://docs.traefik.io/user-guide/docker-and-lets-encrypt/](https://docs.traefik.io/user-guide/docker-and-lets-encrypt/)
+[https://docs.traefik.io/](https://docs.traefik.io/)
 
 ## Instructions
 1) Create the Dash network (if not created already) `docker network create dash-net`
 
-2) Checkout the `deploy-marist` branch: `git checkout deploy-marist`
+2) Add the digital certificate and private key (named `traefik.crt` and `private.key`, respectively) to the `ssl/` directory
 
-3) Pull the Traefik Docker image and start the server
+3) Start the services
     - `docker-compose up -d`
     
-4) To hook a service running in Docker to Traefik
+3) To hook a service running in Docker to Traefik
     - Add a `labels` object in the service's `docker-compose.yml` or `production.yml`
     - Add the following options under `labels`
 ```
