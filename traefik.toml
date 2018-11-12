@@ -1,16 +1,24 @@
 debug = false
 
 logLevel = "ERROR"
-defaultEntryPoints = ["http"]
+defaultEntryPoints = ["http", "https"]
 	
 [entryPoints]
   [entryPoints.http]
   address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+    [[entryPoints.https.tsl.certificates]]
+    certFile = "ssl/traefik.crt"
+    keyFile = "ssl/traefik.key"
 
 [retry]
 
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "dev-maristdash.tk"
+domain = "speedegree.tk"
 watch = true
 exposedByDefault = false

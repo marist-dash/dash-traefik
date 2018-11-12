@@ -1,7 +1,7 @@
 version: '2'
 services:
   traefik:
-    image: traefik:1.5.4
+    image: traefik:1.7.4-alpine
     restart: always
     ports:
       - "80:80"
@@ -10,6 +10,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/traefik.toml
+      - ./ssl:/ssl
     container_name: traefik
   portainer:
     image: portainer/portainer
@@ -28,6 +29,7 @@ services:
       - "traefik.port=9000"
       - "traefik.frontend.rule=Host:dash-portainer.speedegree.tk"
       - "traefik.backend=portainer"
+    container_name: dash-portainer
 networks:
   dash-net:
     external: true
